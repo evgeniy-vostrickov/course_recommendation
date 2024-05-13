@@ -1,0 +1,24 @@
+<h2 class="headers-page">Рекомендация курсов</h2>
+<h3>Самые популярные тэги</h3>
+<ul style="font-size: 20px;">
+    {{#list_popular_tags}}
+        <li>{{.}}</li>
+    {{/list_popular_tags}}
+</ul>
+<h3>Поиск курсов</h3>    
+<div style="display: flex; justify-content: space-between; margin: 20px 0 20px 0">
+    <form method="post" class="search-form" id="course-search-form" >
+        <div class="search-container">
+            <input type="text" id="request-search-courses" placeholder="Поиск по описаниям курсов..." class="search-input" autocomplete="off">
+        </div>
+        <input type="submit" class="btn btn-primary" style="border-radius: 0.5rem;" value="Поиск курсов" />
+    </form>
+    <form method="post" class="search-form" id="competency-search-form">
+        <div class="search-container">
+            <input type="text" id="request-search-competencies" placeholder="Поиск по компетенциям..." class="search-input" autocomplete="off">
+        </div>
+        <input type="submit" class="btn btn-primary" style="border-radius: 0.5rem;" value="Поиск курсов" />
+    </form>
+</div>
+
+<div id="list-courses"></div>

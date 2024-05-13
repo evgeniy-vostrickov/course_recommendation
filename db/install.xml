@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="local/course_recommendation/db" VERSION="20160830" COMMENT="XMLDB file for local IET"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="popular_tags" COMMENT="List a prof standards to a course">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="tag_name" TYPE="char" LENGTH="100" NOTNULL="true" SEQUENCE="false" COMMENT="Tag name"/>
+        <FIELD NAME="count" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false" COMMENT="Number of tag requests"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
