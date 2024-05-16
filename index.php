@@ -20,8 +20,9 @@ echo '<script src="'.new moodle_url('/local/course_recommendation/src/lunr.multi
 echo '<script>';
 echo 'var currentUserID = ' . $USER->id . ';';
 echo '</script>';
+echo '<script defer src="'.new moodle_url('/local/course_recommendation/src/data.js').'" type="module"></script>';
 echo '<script defer src="'.new moodle_url('/local/course_recommendation/src/getRecommendation.js').'" type="module"></script>';
-echo '<script src="'.new moodle_url('/local/course_recommendation/src/test_search.js').'"></script>';
+// echo '<script src="'.new moodle_url('/local/course_recommendation/src/test_search.js').'"></script>';
 
 require_login();
 
