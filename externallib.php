@@ -75,6 +75,8 @@ class course_recommendation_external extends external_api {
      */
     public static function getListCoursesByIds(string $names_courses, string $names_requests, string $seach_type) {
         global $DB, $CFG;
+        $dbman = $DB->get_manager();
+        $nameRatingTable = "tool_courserating_summary";
 
         $names_courses = explode(";", $names_courses);
 
@@ -126,6 +128,13 @@ class course_recommendation_external extends external_api {
                 $new_course->name = $name_course;
                 $new_course->direction = $split_full_name_course[1];
                 $new_course->teacher = $split_full_name_course[count($split_full_name_course) - 1];
+
+                $course_rating = "нет";
+                if ($dbman->table_exists($nameRatingTable)) {
+                    $course_rating = $DB->get_field($nameRatingTable, 'avgrating', array('courseid' => $currentCourse->id));
+                    $course_rating = empty($course_rating) ? "нет" : $course_rating;
+                }
+                $new_course->rating = $course_rating;
                 
                 $competencies_course = competency_api::list_course_competencies($currentCourse->id);
                 $list_competency_name = "";

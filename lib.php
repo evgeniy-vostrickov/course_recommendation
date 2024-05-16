@@ -1,13 +1,8 @@
 <?php
-
-function local_course_recommendation_extend_navigation_user($navigation, $user, $context, $course, $coursecontext) {
-    $url = new moodle_url('/local/course_recommendation/index.php');
-    $navigation->add(get_string('courserecommendation', 'local_course_recommendation'), $url);
-}
+require_once("$CFG->dirroot/lib/accesslib.php");
 
 function local_course_recommendation_myprofile_navigation(core_user\output\myprofile\tree $tree, $user, $iscurrentuser, $course) {
-    // мой id в eos2 14775
-    if ($user->id == 14775) {
+    if (is_siteadmin()) {
         $courserecommendation = new moodle_url('/local/course_recommendation/index.php');
         $node = new core_user\output\myprofile\node('miscellaneous', 'course_recommendation', get_string('courserecommendation', 'local_course_recommendation'), null, $courserecommendation);
         $tree->add_node($node);

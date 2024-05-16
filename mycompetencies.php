@@ -16,6 +16,8 @@ $PAGE->requires->css(new moodle_url('/report/competency_statistic/src/cssprogres
 $PAGE->requires->css(new moodle_url('/report/competency_statistic/src/style.css'));
 echo '<script src="'.new moodle_url('/report/competency_statistic/src/chart.min.js').'"></script>';
 
+require_login();
+
 // Сохраняем id текущего пользователя.
 $currentuser = $USER->id;
 $date_start = optional_param('date_start', null, PARAM_TEXT);

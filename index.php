@@ -23,6 +23,8 @@ echo '</script>';
 echo '<script defer src="'.new moodle_url('/local/course_recommendation/src/getRecommendation.js').'" type="module"></script>';
 echo '<script src="'.new moodle_url('/local/course_recommendation/src/test_search.js').'"></script>';
 
+require_login();
+
 // Сохраняем id текущего пользователя.
 $currentuser = $USER->id;
 $baseurl = new moodle_url('/local/course_recommendation/index.php');
