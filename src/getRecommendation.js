@@ -107,7 +107,7 @@ define('test', ['core/ajax', 'core/utils'], function (Ajax) {
                                         <div class="body-btn-info">${course['direction']}</div>
                                         <div class="body-btn-info">ВолгГТУ</div>
                                     </div>
-                                    <a href="${course['viewurl']}" class="body-btn-more">Подробнее</a>
+                                    <a href="${course['viewurl']}" target="_blank" class="body-btn-more">Подробнее</a>
                                 </div>
                             </div>
                         </div>
@@ -137,20 +137,45 @@ define('test', ['core/ajax', 'core/utils'], function (Ajax) {
 require(['test'], (func) => {
   const courseSearchForm = document.querySelector('#course-search-form')
   const competencySearchForm = document.querySelector('#competency-search-form')
+  const searchCoursesContainer = document.querySelector('#search-courses-container')
   const queryCoursesString = document.querySelector('#request-search-courses')
+  const searchCompetenciesContainer = document.querySelector('#search-competencies-container')
   const queryCompetenciesString = document.querySelector('#request-search-competencies')
   const popularQueries = document.querySelectorAll('.popular-queries')
+  const errorMessage = document.querySelector('#error-valid')
+  const searchListCourses = document.querySelector('#list-courses')
+  
 
   competencySearchForm.addEventListener('submit', (event) => {
     event.preventDefault()
+    searchCoursesContainer.classList.remove('error-input')
     const query = queryCompetenciesString.value
-    func.displayListCourses(query, competencies, 'Поиск по компетенциям')
+
+    if (query.length !== 0) {
+      errorMessage.classList.add('display-none')
+      searchCompetenciesContainer.classList.remove('error-input')
+      func.displayListCourses(query, competencies, 'Поиск по компетенциям')
+    } else {
+      searchListCourses.innerHTML = ''
+      errorMessage.classList.remove('display-none')
+      searchCompetenciesContainer.classList.add('error-input')
+    }
   })
 
   courseSearchForm.addEventListener('submit', (event) => {
     event.preventDefault()
+    searchCompetenciesContainer.classList.remove('error-input')
     const query = queryCoursesString.value
-    func.displayListCourses(query, courses, 'Поиск по курсам')
+    
+    if (query.length !== 0) {
+      errorMessage.classList.add('display-none')
+      searchCoursesContainer.classList.remove('error-input')
+      func.displayListCourses(query, courses, 'Поиск по курсам')
+    } else {
+      searchListCourses.innerHTML = ''
+      errorMessage.classList.remove('display-none')
+      searchCoursesContainer.classList.add('error-input')
+    }
   })
 
   popularQueries.forEach((tag) => {

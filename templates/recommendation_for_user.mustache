@@ -8,17 +8,18 @@
 <h3>Поиск курсов</h3>    
 <div style="display: flex; justify-content: space-between; margin: 20px 0 20px 0">
     <form method="post" class="search-form" id="course-search-form" >
-        <div class="search-container">
-            <input type="text" id="request-search-courses" placeholder="Поиск по описаниям курсов..." class="search-input" autocomplete="off">
+        <div class="search-container" id="search-courses-container">
+            <input type="text" id="request-search-courses" placeholder="Поиск по описаниям курсов..." class="search-input" autocomplete="off" maxlength="55">
         </div>
         <input type="submit" class="btn btn-primary" style="border-radius: 0.5rem;" value="Поиск курсов" />
     </form>
     <form method="post" class="search-form" id="competency-search-form">
-        <div class="search-container">
-            <input type="text" id="request-search-competencies" placeholder="Поиск по компетенциям..." class="search-input" autocomplete="off">
+        <div class="search-container" id="search-competencies-container">
+            <input type="text" id="request-search-competencies" placeholder="Поиск по компетенциям..." class="search-input" autocomplete="off" maxlength="55">
         </div>
         <input type="submit" class="btn btn-primary" style="border-radius: 0.5rem;" value="Поиск курсов" />
     </form>
 </div>
+<span class="display-none" id="error-valid" style="color: red;">Поле не должно быть пустым!</span>
 
 <div id="list-courses"></div>
