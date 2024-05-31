@@ -86,7 +86,7 @@ define('test', ['core/ajax', 'core/utils'], function (Ajax) {
             const node = `
                 <div class="course">
                     <div class="card-wrapper md:flex">
-                        <a href="${course['viewurl']}" tabindex="-1">
+                        <a href="${course['viewurl']}" target="_blank" tabindex="-1">
                             <div class="card-wrapper-image" style=''>
                             </div>
                         </a>
